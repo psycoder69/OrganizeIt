@@ -30,7 +30,7 @@ const AutoResizeInput = ({
             textareaRef.current.style.height = "auto"; // Reset height
             textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, maxInputHeight)}px`; // Set height to scrollHeight but not exceed 216px
         }
-    }, [inputValue]); // Trigger when the value changes
+    }, [inputValue, maxInputHeight]); // Trigger when the value changes
 
     return (
             <textarea

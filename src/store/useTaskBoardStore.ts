@@ -176,6 +176,8 @@ const createDefaultBoard = (): TaskBoardType[] => {
 
 // Helper function to retrieve stored boards
 const getStoredBoards = (): TaskBoardType[] => {
+    if (!globalThis.window) return [];
+
     const storedBoards = localStorage.getItem(TASK_BOARDS_KEY);
     const activeBoardId = localStorage.getItem(ACTIVE_BOARD_ID);
 
@@ -196,13 +198,21 @@ const getStoredBoards = (): TaskBoardType[] => {
     return defaultBoards;
 };
 
-const getActiveBoardId = (): string | null => localStorage.getItem(ACTIVE_BOARD_ID);
+const getActiveBoardId = (): string | null => {
+    if (!globalThis.window) return null;
+
+    return localStorage.getItem(ACTIVE_BOARD_ID);
+};
 
 export const saveBoardsToLocalStorage = (boards: TaskBoardType[]) => {
+    if (!globalThis.window) return;
+
     localStorage.setItem(TASK_BOARDS_KEY, JSON.stringify(boards));
 };
 
 const saveActiveBoardIdToLocalStorage = (boardId: string) => {
+    if  (!globalThis.window) return;
+
     localStorage.setItem(ACTIVE_BOARD_ID, boardId);
 };
 

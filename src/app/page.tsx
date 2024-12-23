@@ -7,12 +7,12 @@ import TaskBoard from "@/components/Board/TaskBoard";
 import { useTaskBoardStore } from "@/store/useTaskBoardStore";
 import { BoardTitle } from "@/components/Board/BoardTitle";
 
-const Home = () => {
+const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
 
   const { activeBoard } = useTaskBoardStore();
 
-  if (activeBoard === null) return null;
+  if (!activeBoard) return null;
 
   return (
     <SidebarProvider
@@ -35,4 +35,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default App;

@@ -1,3 +1,5 @@
+"use client";
+
 import { useTaskBoardStore } from "@/store/useTaskBoardStore";
 import { Input } from "@/components/ui/input";
 
